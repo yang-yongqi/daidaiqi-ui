@@ -40,6 +40,9 @@
                         </template>
                     </a-dropdown>
                 </div>
+                <div>
+                    <icon icon="ApiOutlined"></icon>
+                </div>
             </div>
         </div>
         <div class="layout-header-bottom">
@@ -92,7 +95,6 @@ export default defineComponent({
             () => route.matched,
             item => {
                 let arr = [...item];
-                arr.pop()
                 state.navigation = arr;
             }, {
                 immediate: true
@@ -115,7 +117,7 @@ export default defineComponent({
     .layout-header-top {
         height: 50px;
         background: #ffffff;
-        padding: 0 50px 0 20px;
+        padding: 0 20px 0 20px;
         display: flex;
         justify-content: space-between;
         border-bottom: 1px solid whitesmoke;
@@ -155,6 +157,7 @@ export default defineComponent({
 }
 
 .swiper-slide {
+    width: 100px;
     display: flex;
     justify-content: center;
     border-left: 1px solid whitesmoke;

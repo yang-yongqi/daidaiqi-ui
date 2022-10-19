@@ -1,18 +1,15 @@
 <template>
-    <div>role</div>
+    <a-empty :image="simpleImage" />
 </template>
-
 <script>
-import {defineComponent} from "vue";
-import {useAppStore} from "/@/store/modules/app";
-
+import { defineComponent } from 'vue';
+import { Empty } from 'ant-design-vue';
 export default defineComponent({
     setup() {
-        let store = useAppStore()
-    }
-})
+        return {
+            simpleImage: Empty.PRESENTED_IMAGE_SIMPLE,
+        };
+    },
+
+});
 </script>
-
-<style scoped>
-
-</style>

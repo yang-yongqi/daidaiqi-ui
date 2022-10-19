@@ -24,6 +24,7 @@ export default defineComponent({
 </script>
 <style>
 .layout-content{
+    height: 100%;
     padding: 15px;
 }
 </style>

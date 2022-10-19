@@ -1,5 +1,6 @@
 import {createApp} from 'vue'
 import './mock';
+import './style/default.css'
 import App from './App.vue'
 import {initStore} from "./store";
 import {initRouter, router} from "./router";

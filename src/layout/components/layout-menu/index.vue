@@ -1,5 +1,5 @@
 <script lang="jsx">
-import {defineComponent} from 'vue';
+import {defineComponent, reactive} from 'vue';
 import {useAppStore} from "../../../store/modules/app";
 import {useRouter} from "vue-router";
 
@@ -7,18 +7,30 @@ export default defineComponent({
     setup() {
         const router = useRouter()
         let routeList = useAppStore().routeList;
+        let state = reactive({
+            selectedKeys: [],
+            openKeys: [],
+        })
+
+        function initTempKeys() {
+            let tempKeys = router.currentRoute.value.path.split("/")
+            state.selectedKeys = [tempKeys[tempKeys.length - 1]]
+            tempKeys.shift()
+            tempKeys.pop()
+            state.openKeys = [...tempKeys]
+        }
+
+        initTempKeys()
 
         function handler(item, key, keyPath) {
             let path = "";
             for (let i = 0; i < item.keyPath.length; i++) {
-                if (i != 0) {
-                    path += "/" + item.keyPath[i];
-                } else {
-                    path += item.keyPath[i];
-                }
+                path += "/" + item.keyPath[i];
             }
             if (path != router.currentRoute.value.fullPath) {
-                router.push(path)
+                router.push(path).then((res) => {
+                    initTempKeys()
+                })
             }
         }
 
@@ -47,6 +59,8 @@ export default defineComponent({
             return (
                 <>
                     <a-menu
+                        v-model:selectedKeys={state.selectedKeys}
+                        v-model:openKeys={state.openKeys}
                         onClick={handler}
                         mode="inline"
                         theme="dark"

@@ -5,7 +5,7 @@ Mock.mock('/user/getPermissions', {
 	msg: '请求成功',
 	data: [
 		{
-			path: '/dashboard',
+			path: 'dashboard',
 			name: 'Dashboard',
 			component: 'layout/BlankLayout',
 			meta: {
@@ -32,7 +32,7 @@ Mock.mock('/user/getPermissions', {
 			],
 		},
 		{
-			path: '/system',
+			path: 'system',
 			name: 'System',
 			component: 'layout/BlankLayout',
 			redirect: '/system/menu',
@@ -68,7 +68,7 @@ Mock.mock('/user/getPermissions', {
 			],
 		},
 		{
-			path: '/personal',
+			path: 'personal',
 			name: 'Personal',
 			component: 'personal/index',
 			meta: {

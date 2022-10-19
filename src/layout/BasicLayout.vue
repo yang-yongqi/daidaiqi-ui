@@ -5,7 +5,9 @@
             <a-layout>
                 <layout-header></layout-header>
                 <a-layout-content>
-                    <router-view></router-view>
+                    <div class="layout-content">
+                        <router-view></router-view>
+                    </div>
                 </a-layout-content>
             </a-layout>
         </a-layout>
@@ -20,3 +22,8 @@ export default defineComponent({
     components: {layoutSider, layoutHeader}
 })
 </script>
+<style>
+.layout-content{
+    padding: 15px;
+}
+</style>

@@ -90,7 +90,7 @@ export default defineComponent({
         watch(
             () => route.matched,
             item => {
-                let arr = item;
+                let arr = [...item];
                 arr.pop()
                 state.navigation = arr;
             }, {

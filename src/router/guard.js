@@ -39,9 +39,9 @@ async function initPermissions() {
 }
 
 
-const layouModules = import.meta.glob('../layout/*.vue');
+const layoutModules = import.meta.glob('../layout/*.vue');
 const viewsModules = import.meta.glob('../views/**/*.vue');
-const dynamicViewsModules = Object.assign({}, {...layouModules}, {...viewsModules});
+const dynamicViewsModules = Object.assign({}, {...layoutModules}, {...viewsModules});
 
 export function initComponent(routes) {
     if (!routes) {

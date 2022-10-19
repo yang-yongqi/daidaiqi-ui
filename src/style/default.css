@@ -1,3 +1,9 @@
+/* 导航的颜色 */
 .ant-menu.ant-menu-dark{
     background: #000000 !important;
+}
+/* 头部面包屑 */
+.layout-header-left .ant-breadcrumb{
+    height: 50px !important;
+    line-height: 50px !important;
 }

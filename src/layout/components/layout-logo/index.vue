@@ -10,8 +10,8 @@
 </template>
 <style lang="less">
 .layout-logo{
-    height: 60px;
-    line-height: 60px;
+    height: 65px;
+    line-height: 65px;
     display: flex;
     align-items: center;
     justify-content: center;

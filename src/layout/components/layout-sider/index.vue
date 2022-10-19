@@ -1,5 +1,5 @@
 <template>
-    <a-layout-sider width="250" class="layout-sider">
+    <a-layout-sider width="255" class="layout-sider">
         <layout-logo></layout-logo>
         <layout-menu></layout-menu>
     </a-layout-sider>

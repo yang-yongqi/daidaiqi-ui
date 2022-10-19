@@ -5,7 +5,9 @@ export const useAppStore = defineStore({
     id: 'app',
     state: () => ({
         userInfo: null,
-        routeList: []
+        routeList: [],
+        headerSwiper: [],
+        currentHeaderSwiper: null
     }),
     actions: {
         async getUserInfo() {
@@ -14,6 +16,18 @@ export const useAppStore = defineStore({
         },
         setRouteList(routeList) {
             this.routeList = routeList
+        },
+        setHeaderSwiper(route) {
+            for (let item in this.headerSwiper) {
+                if (this.headerSwiper[item].path == route.path) {
+                    return
+                }
+            }
+            this.headerSwiper.push({
+                title: route.meta.title,
+                path: route.path
+            })
+            this.currentHeaderSwiper = route.path
         }
     }
 });

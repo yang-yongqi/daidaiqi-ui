@@ -21,6 +21,7 @@ export function initRouterGuard(router) {
                         next({path: to.fullPath, replace: true, query: to.query});
                     });
                 } else {
+                    useAppStore().setHeaderSwiper(to)
                     next();
                 }
             }

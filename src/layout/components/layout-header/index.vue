@@ -53,7 +53,7 @@
                     <div>
                         {{ item.title }}
                     </div>
-                    <div>
+                    <div v-if="item.path != '/dashboard/console' " >
                         <icon icon="CloseOutlined"></icon>
                     </div>
                 </swiper-slide>

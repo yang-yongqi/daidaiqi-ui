@@ -6,7 +6,12 @@ export const useAppStore = defineStore({
     state: () => ({
         userInfo: null,
         routeList: [],
-        headerSwiper: [],
+        headerSwiper: [
+            {
+                path:"/dashboard/console",
+                title:"主控台"
+            }
+        ],
         currentHeaderSwiper: null
     }),
     actions: {
@@ -18,6 +23,7 @@ export const useAppStore = defineStore({
             this.routeList = routeList
         },
         setHeaderSwiper(route) {
+            this.setCurrentHeaderSwiper(route.path)
             for (let item in this.headerSwiper) {
                 if (this.headerSwiper[item].path == route.path) {
                     return
@@ -27,7 +33,6 @@ export const useAppStore = defineStore({
                 title: route.meta.title,
                 path: route.path
             })
-            this.setCurrentHeaderSwiper(route.path)
         },
         setCurrentHeaderSwiper(path) {
             this.currentHeaderSwiper = path

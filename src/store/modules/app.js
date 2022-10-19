@@ -27,7 +27,10 @@ export const useAppStore = defineStore({
                 title: route.meta.title,
                 path: route.path
             })
-            this.currentHeaderSwiper = route.path
+            this.setCurrentHeaderSwiper(route.path)
+        },
+        setCurrentHeaderSwiper(path) {
+            this.currentHeaderSwiper = path
         }
     }
 });

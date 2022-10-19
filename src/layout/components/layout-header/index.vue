@@ -85,6 +85,7 @@ export default defineComponent({
         let store = useAppStore()
 
         let handleSlideClick = (path) => {
+            store.setCurrentHeaderSwiper(path)
             router.push(path)
         };
         watch(

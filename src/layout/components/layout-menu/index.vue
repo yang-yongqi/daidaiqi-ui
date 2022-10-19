@@ -1,9 +1,11 @@
 <script lang="jsx">
-import {defineComponent, reactive} from 'vue';
+import {defineComponent, reactive, ref} from 'vue';
 import {useAppStore} from "../../../store/modules/app";
 import {useRouter} from "vue-router";
+import {Icon} from '/@/common/icon.js'
 
 export default defineComponent({
+    components: {Icon},
     setup() {
         const router = useRouter()
         let routeList = useAppStore().routeList;
@@ -12,7 +14,7 @@ export default defineComponent({
             openKeys: [],
         })
 
-        function initTempKeys() {
+        const initTempKeys = () => {
             let tempKeys = router.currentRoute.value.path.split("/")
             state.selectedKeys = [tempKeys[tempKeys.length - 1]]
             tempKeys.shift()
@@ -34,12 +36,22 @@ export default defineComponent({
             }
         }
 
+
         function renderMenu(routeList) {
             return routeList.map((item, index) => {
+                const slots = {
+                    icon: () => {
+                        return (
+                            <div>
+                                {item.meta.icon ? <icon icon={item.meta.icon}></icon> : null}
+                            </div>
+                        )
+                    }
+                }
                 if (item.children && item.children.length) {
                     return (
-                        <a-sub-menu
-                            key={item.path} title={item.meta.title}>
+                        <a-sub-menu v-slots={slots}
+                                    key={item.path} title={item.meta.title}>
                             {
                                 renderMenu(item.children)
                             }
@@ -48,7 +60,10 @@ export default defineComponent({
                 } else {
                     return (
                         <a-menu-item key={item.path}>
-                            {item.meta.title}
+                            {item.meta.icon ? <icon icon={item.meta.icon}></icon> : null}
+                            <span>
+                                {item.meta.title}
+                            </span>
                         </a-menu-item>
                     )
                 }

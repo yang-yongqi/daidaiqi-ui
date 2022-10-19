@@ -3,7 +3,7 @@
         <div class="layout-header-top">
             <div class="layout-header-left">
                 <div>
-                    <icon icon="MenuFoldOutlined"></icon>
+                    <icon @click="changeCollapse" icon="MenuFoldOutlined"></icon>
                 </div>
                 <div>
                     <icon icon="RollbackOutlined"></icon>
@@ -56,7 +56,7 @@
                     <div>
                         {{ item.title }}
                     </div>
-                    <div v-if="item.path != '/dashboard/console' " >
+                    <div v-if="item.path != '/dashboard/console' ">
                         <icon icon="CloseOutlined"></icon>
                     </div>
                 </swiper-slide>
@@ -91,6 +91,9 @@ export default defineComponent({
             store.setCurrentHeaderSwiper(path)
             router.push(path)
         };
+        let changeCollapse = () => {
+            store.setCollapse()
+        }
         watch(
             () => route.matched,
             item => {
@@ -104,7 +107,8 @@ export default defineComponent({
         return {
             ...toRefs(state),
             store,
-            handleSlideClick
+            handleSlideClick,
+            changeCollapse
         }
     }
 })
@@ -170,14 +174,16 @@ export default defineComponent({
         margin-left: 10px;
     }
 }
-.swiper-slide-mask{
+
+.swiper-slide-mask {
     border-radius: 50%;
     height: 8px;
     width: 8px;
     margin-top: 16px;
     margin-right: 10px;
 }
-.swiper-slide-current{
+
+.swiper-slide-current {
     background: #009688;
 }
 </style>

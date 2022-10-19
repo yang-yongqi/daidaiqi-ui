@@ -10,7 +10,7 @@ Mock.mock('/user/getPermissions', {
 			component: 'layout/BlankLayout',
 			meta: {
 				title: '控制台',
-				icon: 'icon-yibiaopan',
+				icon: 'DesktopOutlined',
 			},
 			children: [
 				{
@@ -38,7 +38,7 @@ Mock.mock('/user/getPermissions', {
 			redirect: '/system/menu',
 			meta: {
 				title: '系统设置',
-				icon: 'icon-shezhi',
+				icon: 'WindowsOutlined',
 			},
 			children: [
 				{
@@ -73,7 +73,7 @@ Mock.mock('/user/getPermissions', {
 			component: 'personal/index',
 			meta: {
 				title: '个人中心',
-				icon: 'icon-yonghu',
+				icon: 'UserOutlined',
 			},
 		},
 	],

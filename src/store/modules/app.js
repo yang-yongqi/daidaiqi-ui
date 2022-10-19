@@ -6,6 +6,7 @@ export const useAppStore = defineStore({
     state: () => ({
         userInfo: null,
         routeList: [],
+        isCollapse:false,
         headerSwiper: [
             {
                 path:"/dashboard/console",
@@ -36,6 +37,9 @@ export const useAppStore = defineStore({
         },
         setCurrentHeaderSwiper(path) {
             this.currentHeaderSwiper = path
+        },
+        setCollapse() {
+            this.isCollapse = !this.isCollapse
         }
     }
 });

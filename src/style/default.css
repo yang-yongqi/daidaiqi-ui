@@ -11,3 +11,7 @@
 .ant-menu-item{
     height: 45px !important;
 }
+/* 导航角标 */
+.ant-layout-sider-trigger{
+    display: none !important;
+}

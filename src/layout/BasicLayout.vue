@@ -23,8 +23,8 @@ export default defineComponent({
 })
 </script>
 <style>
-.layout-content{
+.layout-content {
     height: 100%;
-    padding: 15px;
+    padding: 0 15px 15px 15px;
 }
 </style>

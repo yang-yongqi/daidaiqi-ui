@@ -2,13 +2,13 @@
     <a-layout-header class="layout-header">
         <div class="layout-header-top">
             <div class="layout-header-left">
-                <div>
-                    <icon @click="changeCollapse" icon="MenuFoldOutlined"></icon>
+                <div class="icon" @click="changeCollapse">
+                    <icon icon="MenuFoldOutlined"></icon>
                 </div>
-                <div>
+                <div class="icon" @click="handleRefresh">
                     <icon icon="RollbackOutlined"></icon>
                 </div>
-                <div>
+                <div class="m-l-15">
                     <a-breadcrumb>
                         <a-breadcrumb-item v-for="(item,index) in navigation">
                             {{ item.meta.title }}
@@ -17,10 +17,10 @@
                 </div>
             </div>
             <div class="layout-header-right">
-                <div>
+                <div class="icon">
                     <icon icon="FullscreenOutlined"></icon>
                 </div>
-                <div>
+                <div class="icon">
                     <icon icon="BellOutlined"></icon>
                 </div>
                 <div>
@@ -40,14 +40,14 @@
                         </template>
                     </a-dropdown>
                 </div>
-                <div>
+                <div class="icon">
                     <icon icon="ApiOutlined"></icon>
                 </div>
             </div>
         </div>
-        <div class="layout-header-bottom">
+        <div class="layout-header-bottom" v-if="store.slidesPerView">
             <swiper
-                :slides-per-view="12"
+                :slides-per-view="store.slidesPerView"
             >
                 <swiper-slide @click="handleSlideClick(item.path)" :class="['swiper-slide']"
                               v-for="(item,index) in store.headerSwiper" :key="index">
@@ -81,7 +81,7 @@ export default defineComponent({
     setup() {
         let route = useRoute()
         let state = reactive({
-            navigation: []
+            navigation: [],
         })
         let router = useRouter()
 
@@ -93,6 +93,9 @@ export default defineComponent({
         };
         let changeCollapse = () => {
             store.setCollapse()
+        }
+        let handleRefresh = () => {
+            location.reload();
         }
         watch(
             () => route.matched,
@@ -108,6 +111,7 @@ export default defineComponent({
             ...toRefs(state),
             store,
             handleSlideClick,
+            handleRefresh,
             changeCollapse
         }
     }
@@ -117,6 +121,7 @@ export default defineComponent({
 .layout-header {
     padding: 0;
     height: 90px;
+    background: #ffffff;
 
     .layout-header-top {
         height: 50px;
@@ -130,26 +135,19 @@ export default defineComponent({
 
     .layout-header-left {
         display: flex;
+    }
 
-        > div {
-            margin-right: 30px;
-        }
+    .icon {
+        padding: 0 15px;
+        cursor: pointer;
 
-        span {
-            cursor: pointer;
+        &:hover {
+            background: #f8f8f9;
         }
     }
 
     .layout-header-right {
         display: flex;
-
-        > div {
-            margin-left: 30px;
-        }
-
-        span {
-            cursor: pointer;
-        }
     }
 }
 

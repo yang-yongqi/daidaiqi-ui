@@ -6,11 +6,14 @@ export const useAppStore = defineStore({
     state: () => ({
         userInfo: null,
         routeList: [],
-        isCollapse:false,
+        isCollapse: false,
+        clientWidth: 0,
+        slidesPerView: 0,
+        clientHeight: 0,
         headerSwiper: [
             {
-                path:"/dashboard/console",
-                title:"主控台"
+                path: "/dashboard/console",
+                title: "主控台"
             }
         ],
         currentHeaderSwiper: null
@@ -40,6 +43,19 @@ export const useAppStore = defineStore({
         },
         setCollapse() {
             this.isCollapse = !this.isCollapse
-        }
+        },
+        setClientWidth(clientWidth) {
+            this.clientWidth = clientWidth
+            this.slidesPerView =
+                this.clientWidth < 576 ? 0 :
+                    this.clientWidth < 768 ? 0 :
+                        this.clientWidth < 992 ? 4 :
+                            this.clientWidth < 1200 ? 6 :
+                                this.clientWidth < 1400 ? 8 : 10;
+            this.isCollapse = this.slidesPerView != 0 ? false : true
+        },
+        setClientHeight(clientHeight) {
+            this.clientHeight = clientHeight
+        },
     }
 });

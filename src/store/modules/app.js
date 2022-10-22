@@ -54,7 +54,6 @@ export const useAppStore = defineStore({
              * 1400
              */
             this.isCollapse = this.clientWidth < 768 ? true : false;
-            console.log( this.isCollapse)
         },
         setClientHeight(clientHeight) {
             this.clientHeight = clientHeight

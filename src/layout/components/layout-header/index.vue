@@ -45,9 +45,9 @@
                 </div>
             </div>
         </div>
-        <div class="layout-header-bottom" v-if="store.slidesPerView">
+        <div class="layout-header-bottom">
             <swiper
-                :slides-per-view="store.slidesPerView"
+                slides-per-view="auto"
             >
                 <swiper-slide @click="handleSlideClick(item.path)" :class="['swiper-slide']"
                               v-for="(item,index) in store.headerSwiper" :key="index">
@@ -159,14 +159,13 @@ export default defineComponent({
 }
 
 .swiper-slide {
-    width: 100px;
+    width: 120px;
     display: flex;
     justify-content: center;
     border-left: 1px solid whitesmoke;
     font-size: 14px;
     cursor: pointer;
     color: #696969;
-
     span {
         color: #999;
         margin-left: 10px;

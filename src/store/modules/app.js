@@ -46,13 +46,14 @@ export const useAppStore = defineStore({
         },
         setClientWidth(clientWidth) {
             this.clientWidth = clientWidth
-            this.slidesPerView =
-                this.clientWidth < 576 ? 0 :
-                    this.clientWidth < 768 ? 0 :
-                        this.clientWidth < 992 ? 4 :
-                            this.clientWidth < 1200 ? 6 :
-                                this.clientWidth < 1400 ? 8 : 10;
-            this.isCollapse = this.slidesPerView != 0 ? false : true
+            /**
+             * 576
+             * 768
+             * 992
+             * 1200
+             * 1400
+             */
+            this.isCollapse = this.clientWidth < 768 ? true : false;
         },
         setClientHeight(clientHeight) {
             this.clientHeight = clientHeight

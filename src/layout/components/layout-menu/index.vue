@@ -15,7 +15,7 @@ export default defineComponent({
         })
 
         const initTempKeys = () => {
-            if (useAppStore().clientWidth < 700) return;
+            if (useAppStore().isCollapse) return;
             let tempKeys = router.currentRoute.value.path.split("/")
             state.selectedKeys = [tempKeys[tempKeys.length - 1]]
             tempKeys.shift()

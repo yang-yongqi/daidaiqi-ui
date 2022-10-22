@@ -11,7 +11,7 @@
                     <a-button>搜索</a-button>
                 </div>
             </template>
-            <template #body="{ column, text, record }">
+            <template #bodyCell="{ column, text, record }">
                 <span>{{ column.title }}</span>
             </template>
         </global-table>

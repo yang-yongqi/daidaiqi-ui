@@ -6,7 +6,9 @@
         </div>
         <div class="table" :style="{'height':height -190 + 'px'}">
             <a-table :style="{'height':height -280 + 'px'}"
+                     sticky
                      :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
+                     :scroll="{ x: 1500 }"
                      :dataSource="props.dataSource" :columns="props.columns" bordered>
                 <template #bodyCell="{ column, text, record }">
                     <slot name="body" :column="column" :text="text" :record="record"></slot>

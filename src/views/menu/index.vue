@@ -1,6 +1,6 @@
 <template>
     <div>
-        <global-table :dataSource="dataSource" :columns="columns">
+        <global-table :dataSource="dataSource" :columns="columns" >
             <template #header>
                 <div>
                     <a-button type="primary">新增</a-button>
@@ -12,7 +12,7 @@
                 </div>
             </template>
             <template #body="{ column, text, record }">
-                <span>{{ column }}</span>
+                <span>{{ column.title }}</span>
             </template>
         </global-table>
     </div>
@@ -38,6 +38,7 @@ export default defineComponent({
                     name: '胡彦祖',
                     age: 42,
                     address: '西湖区湖底公园1号',
+
                 },
             ],
             columns: [

@@ -49,6 +49,16 @@
                         <template #extra>
                             <a-tag color="success">日</a-tag>
                         </template>
+                        <div class="console-top-card">
+                            <div class="console-top-number">
+                                1588
+                            </div>
+                            <div id="orderQuantity"></div>
+                        </div>
+                        <a-row justify="space-between" class="m-t-10">
+                            <a-col :span="12">转化率</a-col>
+                            <a-col :span="12" class="text-r">60 %</a-col>
+                        </a-row>
                     </a-card>
                 </a-col>
                 <a-col :xs="24" :sm="24" :md="24" :lg="12" :xl="6" class="m-t-15">
@@ -63,14 +73,23 @@
     </div>
 </template>
 <script>
-import {defineComponent} from 'vue';
+import {defineComponent, onMounted} from 'vue';
 import {Icon} from "../../common/icon";
+import * as echarts from 'echarts'
+import {orderQuantityOption} from "./option";
 
 export default defineComponent({
     components: {
         Icon,
     },
     setup() {
+        onMounted(() => {
+            let myChart = echarts.init(document.getElementById("orderQuantity"));
+            myChart.setOption(orderQuantityOption);
+            window.onresize = function () {
+                myChart.resize();
+            };
+        })
         return {};
     },
 
@@ -82,12 +101,17 @@ export default defineComponent({
 }
 
 .console-top-card {
-    height: 80px;
+    height: 90px;
     border-bottom: 1px solid rgb(232, 234, 236);
 }
 
 .console-top-trend {
     height: 22px;
     overflow: hidden;
+}
+
+#orderQuantity {
+    width: 100%;
+    height: 40px;
 }
 </style>

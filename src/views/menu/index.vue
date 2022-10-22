@@ -1,13 +1,13 @@
 <template>
     <div>
-        <global-table :dataSource="dataSource" :columns ="columns">
+        <global-table :dataSource="dataSource" :columns="columns">
             <template v-slot:header>
                 <div>
                     <a-button type="primary">新增</a-button>
-                    <a-button type="primary" danger>删除</a-button>
+                    <a-button type="primary" @click="useDeleteByIds('接口地址')" danger>删除</a-button>
                 </div>
                 <div>
-                    <a-input v-model="value" placeholder="请输入" />
+                    <a-input v-model="value" placeholder="请输入"/>
                     <a-button>搜索</a-button>
                 </div>
             </template>
@@ -16,11 +16,12 @@
 </template>
 <script>
 import {defineComponent, reactive, toRefs} from 'vue';
+import {useDeleteByIds} from "../../hooks/useTable";
 
 export default defineComponent({
     setup() {
         let state = reactive({
-            value:"",
+            value: "",
             dataSource: [
                 {
                     key: '1',
@@ -54,7 +55,8 @@ export default defineComponent({
             ],
         })
         return {
-            ...toRefs(state)
+            ...toRefs(state),
+            useDeleteByIds
         };
     },
 

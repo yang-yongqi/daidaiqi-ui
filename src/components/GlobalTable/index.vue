@@ -1,22 +1,34 @@
 <template>
     <div>
         <div class="table-header">
-            <slot name="header"></slot>
+            <slot name="header">
+            </slot>
         </div>
         <div class="table">
-            <a-table :dataSource="props.dataSource" :columns="props.columns"/>
+            <a-table :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
+                     :dataSource="props.dataSource" :columns="props.columns" bordered/>
         </div>
     </div>
 </template>
 
 <script>
-import {defineComponent, defineProps, reactive, ref} from "vue";
+import {defineComponent, defineProps, reactive, ref, toRefs} from "vue";
+import {useSelectedRowKeys} from "../../hooks/useTable";
 
 export default defineComponent({
     props: ["dataSource", "columns"],
     setup(props) {
+        let state = reactive({
+            selectedRowKeys: [],
+        })
+        const onSelectChange = selectedRowKeys => {
+            useSelectedRowKeys(selectedRowKeys)
+            state.selectedRowKeys = selectedRowKeys;
+        };
         return {
-            props
+            props,
+            onSelectChange,
+            ...toRefs(state)
         }
     }
 })
@@ -37,5 +49,12 @@ export default defineComponent({
     > div {
         display: flex;
     }
+}
+
+.table {
+    margin-top: 15px;
+    padding: 15px;
+    background: #ffffff;
+    border-radius: 10px;
 }
 </style>

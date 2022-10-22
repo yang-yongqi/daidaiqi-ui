@@ -8,7 +8,8 @@ import {initRouter, router} from "./router";
 import {initRouterGuard} from "./router/guard";
 import components from "./components";
 import 'default-passive-events'
-
+import 'ant-design-vue/lib/modal/style/index.css'
+import 'ant-design-vue/lib/message/style/index.css'
 (function () {
     const app = createApp(App);
     initStore(app);

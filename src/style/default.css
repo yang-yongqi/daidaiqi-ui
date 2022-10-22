@@ -15,5 +15,6 @@
 .ant-layout-sider-trigger{
     display: none !important;
 }
-.ant-menu-vertical{
+.ant-table-cell{
+    padding: 10px 16px !important;
 }

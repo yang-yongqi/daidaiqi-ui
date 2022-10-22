@@ -1,7 +1,7 @@
 <template>
     <div>
         <global-table :dataSource="dataSource" :columns="columns">
-            <template v-slot:header>
+            <template #header>
                 <div>
                     <a-button type="primary">新增</a-button>
                     <a-button type="primary" @click="useDeleteByIds('接口地址')" danger>删除</a-button>
@@ -10,6 +10,9 @@
                     <a-input v-model="value" placeholder="请输入"/>
                     <a-button>搜索</a-button>
                 </div>
+            </template>
+            <template #body="{ column, text, record }">
+                <span>{{ column }}</span>
             </template>
         </global-table>
     </div>
@@ -20,6 +23,7 @@ import {useDeleteByIds} from "../../hooks/useTable";
 
 export default defineComponent({
     setup() {
+
         let state = reactive({
             value: "",
             dataSource: [
@@ -52,6 +56,10 @@ export default defineComponent({
                     dataIndex: 'address',
                     key: 'address',
                 },
+                {
+                    title: '操作',
+                    key: 'action',
+                }
             ],
         })
         return {

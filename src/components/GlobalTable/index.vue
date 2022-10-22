@@ -4,9 +4,14 @@
             <slot name="header">
             </slot>
         </div>
-        <div class="table">
-            <a-table :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
-                     :dataSource="props.dataSource" :columns="props.columns" bordered/>
+        <div class="table" :style="{'height':height -190 + 'px'}">
+            <a-table :style="{'height':height -280 + 'px'}"
+                     :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
+                     :dataSource="props.dataSource" :columns="props.columns" bordered>
+                <template #bodyCell="{ column, text, record }">
+                    <slot name="body" :column="column" :text="text" :record="record"></slot>
+                </template>
+            </a-table>
         </div>
     </div>
 </template>
@@ -14,10 +19,12 @@
 <script>
 import {defineComponent, defineProps, reactive, ref, toRefs} from "vue";
 import {useSelectedRowKeys} from "../../hooks/useTable";
+import {useAppStore} from "../../store/modules/app";
 
 export default defineComponent({
     props: ["dataSource", "columns"],
     setup(props) {
+        let height = useAppStore().clientHeight
         let state = reactive({
             selectedRowKeys: [],
         })
@@ -27,6 +34,7 @@ export default defineComponent({
         };
         return {
             props,
+            height,
             onSelectChange,
             ...toRefs(state)
         }

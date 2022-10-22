@@ -249,6 +249,10 @@ export default defineComponent({
 });
 </script>
 <style lang="less">
+.console-top {
+    margin-top: -15px;
+}
+
 .console-top-number {
     font-size: 30px;
 }
@@ -362,6 +366,7 @@ export default defineComponent({
         }
     }
 }
+
 .explain {
     padding: 20px;
     font-size: 13px;

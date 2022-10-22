@@ -1,6 +1,6 @@
 <template>
     <div>
-        <global-table :dataSource="dataSource" :columns="columns" >
+        <global-table :dataSource="dataSource" :columns="columns">
             <template #header>
                 <div>
                     <a-button type="primary">新增</a-button>
@@ -23,7 +23,6 @@ import {useDeleteByIds} from "../../hooks/useTable";
 
 export default defineComponent({
     setup() {
-
         let state = reactive({
             value: "",
             dataSource: [

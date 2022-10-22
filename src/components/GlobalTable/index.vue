@@ -7,6 +7,7 @@
         <div class="table" :style="{'height':height -190 + 'px'}">
             <a-table :style="{'height':height -280 + 'px'}"
                      sticky
+                     :pagination="pagination"
                      :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
                      :scroll="{ x: 992 }"
                      :dataSource="props.dataSource" :columns="props.columns" bordered>
@@ -24,7 +25,20 @@ import {useSelectedRowKeys} from "../../hooks/useTable";
 import {useAppStore} from "../../store/modules/app";
 
 export default defineComponent({
-    props: ["dataSource", "columns"],
+    props: {
+        dataSource: {
+            type: Array,
+            required: true
+        },
+        columns: {
+            type: Array,
+            required: true
+        },
+        pagination: {
+            required: false,
+            default:true
+        }
+    },
     setup(props) {
         let height = useAppStore().clientHeight
         let state = reactive({

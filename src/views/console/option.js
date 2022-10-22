@@ -71,3 +71,74 @@ export let orderQuantityOption = {
         },
     ],
 }
+
+export let visitsOption = {
+    grid: {
+
+    },
+    xAxis: {
+        data: [
+            '1 月统计',
+            '2 月统计',
+            '3 月统计',
+            '4 月统计',
+            '5 月统计',
+            '6 月统计',
+            '7 月统计',
+            '8 月统计',
+            '9 月统计',
+            '10 月统计',
+            '11 月统计',
+            '12 月统计',
+        ],
+        splitLine: {
+            lineStyle: {
+                type: 'dashed',
+                width: 1,
+            },
+            show: false,
+        },
+        axisLine: {
+            lineStyle: {
+                color: '#606266',
+            },
+        },
+    },
+    yAxis: {
+        splitLine: {
+            lineStyle: {
+                type: 'dashed',
+                width: 1,
+            },
+            show: true,
+        },
+    },
+    series: [
+        {
+            type: 'bar',
+            barWidth: 50,
+            itemStyle: {
+                color: echarts.graphic.LinearGradient(
+                    0,
+                    0,
+                    0,
+                    1,
+                    [
+                        {
+                            offset: 0,
+                            color: '#5ef3ff',
+                        },
+                        {
+                            offset: 1,
+                            color: '#06a4f4',
+                        },
+                    ],
+                    false
+                ),
+            },
+            data: [
+                254, 3254, 1654, 2454, 4757, 2011, 1211, 254, 3254, 1654, 2454, 4757,
+            ],
+        },
+    ],
+}

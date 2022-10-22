@@ -25,6 +25,6 @@ export default defineComponent({
 <style>
 .layout-content {
     height: 100%;
-    padding: 0 15px 15px 15px;
+    padding: 15px 15px 15px 15px;
 }
 </style>

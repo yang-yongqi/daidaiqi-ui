@@ -12,20 +12,20 @@
                 <img src="/img/logo.png" alt="">
             </div>
             <div class="layout-logo-text">
-                Admin Pro
+                DaiDai Design
             </div>
         </div>
     </div>
 </template>
 <script>
-import {defineComponent, reactive, toRefs} from "vue";
+import {defineComponent} from "vue";
 import {useAppStore} from "../../../store/modules/app";
 
 export default defineComponent({
     setup() {
         let store = useAppStore();
         return {
-            store
+            store,
         }
     }
 })
@@ -62,7 +62,7 @@ export default defineComponent({
 
     .layout-logo-text {
         font-family: fantasy;
-        font-size: 24px;
+        font-size: 18px;
     }
 }
 </style>

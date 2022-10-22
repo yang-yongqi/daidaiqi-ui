@@ -23,7 +23,7 @@ export default defineComponent({
 </script>
 <style lang="less">
 .layout-sider {
-    height: 100vh;
+    min-height: 100vh;
     background: #000;
     color: #ffffff;
 }

@@ -66,6 +66,15 @@
                         <template #extra>
                             <a-tag color="processing">总</a-tag>
                         </template>
+                        <div class="console-top-card">
+                            <div class="console-top-number">
+                                66 <span class="console-top-number-min">位</span>
+                            </div>
+                        </div>
+                        <a-row justify="space-between" class="m-t-10">
+                            <a-col :span="12">总用户</a-col>
+                            <a-col :span="12" class="text-r">10800 人</a-col>
+                        </a-row>
                     </a-card>
                 </a-col>
             </a-row>
@@ -84,11 +93,11 @@ export default defineComponent({
     },
     setup() {
         onMounted(() => {
-            let myChart = echarts.init(document.getElementById("orderQuantity"));
-            myChart.setOption(orderQuantityOption);
-            window.onresize = function () {
-                myChart.resize();
-            };
+            let orderQuantity = echarts.init(document.getElementById("orderQuantity"));
+            orderQuantity.setOption(orderQuantityOption);
+            window.addEventListener('resize', () => {
+                orderQuantity.resize();
+            })
         })
         return {};
     },
@@ -98,6 +107,10 @@ export default defineComponent({
 <style>
 .console-top-number {
     font-size: 30px;
+}
+
+.console-top-number-min {
+    font-size: 22px;
 }
 
 .console-top-card {

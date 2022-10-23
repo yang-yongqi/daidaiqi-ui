@@ -1,7 +1,23 @@
-# Vue 3 + Vite
+<h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">DaiDaiQi v1.0.0</h1>
+<h4 align="center">基于vue前后端分离的快速开发框架</h4>
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+#### 模块说明
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+```
+daidaiqi-ui
+└── public
+     ├── img-----------------图片
+└── src
+     ├── api-----------------全局请求
+     ├── common--------------全局配置
+     ├── components----------全局组件
+     ├── hooks---------------hooks
+     ├── http----------------全局请求封装
+     ├── layout--------------页面基本布局
+     ├── mock----------------数据包
+     ├── router--------------路由
+     ├── store---------------状态
+     ├── style---------------样式
+     ├── utils---------------全局方法
+     └── views---------------页面
+```

@@ -12,7 +12,7 @@
                      :scroll="{ x: 992 }"
                      :dataSource="props.dataSource" :columns="props.columns" bordered>
                 <template #bodyCell="{ column, text, record }">
-                    <slot name="body" :column="column" :text="text" :record="record"></slot>
+                    <slot name="bodyCell" :column="column" :text="text" :record="record"></slot>
                 </template>
             </a-table>
         </div>

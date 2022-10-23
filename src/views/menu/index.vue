@@ -3,7 +3,7 @@
         <global-table :dataSource="dataSource" :columns="columns">
             <template #header>
                 <div>
-                    <a-button type="primary">新增</a-button>
+                    <a-button type="primary" >新增</a-button>
                     <a-button type="primary" @click="useDeleteByIds('接口地址')" danger>删除</a-button>
                 </div>
                 <div>
@@ -12,7 +12,10 @@
                 </div>
             </template>
             <template #bodyCell="{ column, text, record }">
-                <span>{{ column.title }}</span>
+                <div v-if="column.key === 'action'">
+                    <a-button type="primary">编辑</a-button>
+                    <a-button class="m-l-10" type="primary" danger>删除</a-button>
+                </div>
             </template>
         </global-table>
     </div>
@@ -58,6 +61,8 @@ export default defineComponent({
                 },
                 {
                     title: '操作',
+                    width: 200,
+                    align:"center",
                     key: 'action',
                 }
             ],

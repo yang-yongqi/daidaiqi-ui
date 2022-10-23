@@ -6,7 +6,7 @@ import {useAppStore} from "../store/modules/app";
 
 export function initRouterGuard(router) {
     router.beforeEach(async (to, from, next) => {
-        const token = StorageUtils.get('token') ? 1 : 2;
+        const token = StorageUtils.get('token')
         if (to.path === '/login' && !token) {
             next();
         } else {

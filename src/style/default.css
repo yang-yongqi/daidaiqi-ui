@@ -18,3 +18,9 @@
 .ant-table-cell{
     padding: 10px 16px !important;
 }
+.ant-btn{
+    border-radius: 3px !important;
+}
+.ant-input-affix-wrapper{
+    border-radius: 3px !important;
+}
